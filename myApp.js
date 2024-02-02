@@ -1,3 +1,4 @@
+require("dotenv").config();
 let express = require("express");
 let app = express();
 // Ejercicio 01
@@ -22,7 +23,19 @@ app.use("/public", express.static(__dirname + "/public"));
 */
 
 // Ejercicio 04
+/*
 app.get("/json", function (req, res) {
-  res.json({ message: "Hello json" });
+    res.json({ message: "Hello json" });
+  });
+*/
+
+// Ejercicio 05
+app.get("/json", function (req, res) {
+  if (process.env.MESSAGE_STYLE == "uppercase") {
+    res.json({ message: "HELLO JSON" });
+  } else {
+    res.json({ message: "Hello json" });
+  }
 });
+
 module.exports = app;
